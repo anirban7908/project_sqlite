@@ -29,7 +29,7 @@ def add_video(name, time, video_link):
     cursor.execute("INSERT INTO videos (name, time, video_link) VALUES (?, ?, ?)", (name, time, video_link))
     conn.commit()
     
-def update_video(id, name, time, video_link,current_timestamp):
+def update_video(id, name, time, video_link, current_timestamp):
     cursor.execute("UPDATE videos SET name = ?, time = ?, video_link = ? updated_at = ? WHERE id = ?", (name, time, video_link, current_timestamp, id))
     conn.commit()
 
@@ -125,7 +125,7 @@ def main():
                 video_link = input('Enter Video Video Link: ')
                 # Local time in SQLite CURRENT_TIMESTAMP format
                 current_timestamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-                update_video(id, video_name, video_time, current_timestamp)
+                update_video(id, video_name, video_time, video_link, current_timestamp)
             case '4':
                 id = int(input('Enter Video Id: '))
                 delete_video(id)
