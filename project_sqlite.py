@@ -51,6 +51,9 @@ def add_videos_by_file(file_name, file_path):
     if not read_file:
         return "Please Provide a valid json file." 
     else:
+        if not isinstance(videos, list):
+            raise TypeError("Expected videos to be a list")
+        
         for index ,video in enumerate(videos, start = 1):
             # print(f"{index}: Name: {video['name']}, Duration: {video['time']}")
             check_video_existance = check_video(video['name'], video['time'])
